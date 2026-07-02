@@ -35,7 +35,7 @@
 
   xdg.configFile."niri/config.kdl".text = ''
     cursor {
-        xcursor-theme "ArcAurora"
+        xcursor-theme "Bibata-Modern"
         xcursor-size 24
     }
     layout {

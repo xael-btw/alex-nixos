@@ -30,19 +30,7 @@ in
   networking.networkmanager.enable = true;
 
   time.timeZone = "Europe/Madrid";
-
   i18n.defaultLocale = "en_US.UTF-8";
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "es_ES.UTF-8";
-    LC_IDENTIFICATION = "es_ES.UTF-8";
-    LC_MEASUREMENT = "es_ES.UTF-8";
-    LC_MONETARY = "es_ES.UTF-8";
-    LC_NAME = "es_ES.UTF-8";
-    LC_NUMERIC = "es_ES.UTF-8";
-    LC_PAPER = "es_ES.UTF-8";
-    LC_TELEPHONE = "es_ES.UTF-8";
-    LC_TIME = "es_ES.UTF-8";
-  };
 
   services.xserver.enable = true;
   services.xserver.displayManager.sddm.enable = true;
@@ -53,23 +41,17 @@ in
   ];
 
   environment.variables = {
-    XCURSOR_THEME = "ArcAurora";
+    XCURSOR_THEME = "Bibata-Modern";
     XCURSOR_SIZE = "24";
   };
 
-  services.xserver.xkb = {
-    layout = "us";
-    variant = "";
-  };
-
+  services.xserver.xkb.layout = "us";
   services.printing.enable = true;
-
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
     alsa.enable = true;
-    alsa.support32Bit = true;
     pulse.enable = true;
   };
 
@@ -86,23 +68,12 @@ in
   programs.niri.enable = true;
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
     vim wget neovim neofetch alacritty rofi opencode grim slurp brightnessctl
-    git
-    starship
-    noctaliaPkg
-    sddm-astronaut
-    gnumake
-    gcc
-    git-lfs
-    cmatrix
-    htop
-    cowsay
-    swaybg
-    efibootmgr
+    git starship noctaliaPkg sddm-astronaut bibata-cursors
+    gnumake gcc git-lfs cmatrix htop cowsay swaybg efibootmgr
   ];
 
   system.stateVersion = "25.11";
