@@ -1,6 +1,9 @@
 { config, pkgs, noctalia-shell, ... }:
 let
   noctaliaPkg = noctalia-shell.packages.x86_64-linux.default;
+  sddm-astronaut = (pkgs.sddm-astronaut.override {
+    embeddedTheme = "pixel_sakura";
+  });
 in
 {
   imports =
@@ -42,8 +45,17 @@ in
   };
 
   services.xserver.enable = true;
-  services.xserver.displayManager.lightdm.enable = true;
-  services.xserver.desktopManager.cinnamon.enable = true;
+  services.xserver.displayManager.sddm.enable = true;
+  services.xserver.displayManager.sddm.package = pkgs.kdePackages.sddm;
+  services.xserver.displayManager.sddm.theme = "sddm-astronaut-theme";
+  services.xserver.displayManager.sddm.extraPackages = with pkgs; [
+    kdePackages.qtmultimedia
+  ];
+
+  environment.variables = {
+    XCURSOR_THEME = "ArcAurora";
+    XCURSOR_SIZE = "24";
+  };
 
   services.xserver.xkb = {
     layout = "us";
@@ -82,6 +94,7 @@ in
     git
     starship
     noctaliaPkg
+    sddm-astronaut
     gnumake
     gcc
     git-lfs
@@ -89,6 +102,7 @@ in
     htop
     cowsay
     swaybg
+    efibootmgr
   ];
 
   system.stateVersion = "25.11";

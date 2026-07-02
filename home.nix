@@ -34,6 +34,8 @@
     "${noctalia-shell.packages.x86_64-linux.default}/share/noctalia-shell";
 
   xdg.configFile."niri/config.kdl".text = ''
+    cursor-theme "ArcAurora"
+    cursor-size 24
     layout {
         default-column-width { proportion 0.5; }
         focus-ring { off; }
