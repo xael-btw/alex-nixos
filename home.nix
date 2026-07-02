@@ -77,6 +77,32 @@
 
     prefer-no-csd
 
+    blur {
+
+        passes 3
+
+        offset 3.0
+
+        noise 0.02
+
+        saturation 1.5
+
+    }
+
+    overview {
+
+        backdrop-color "#00000080"
+
+    }
+
+    layer-rule {
+
+        match namespace="noctalia-shell"
+
+        place-within-backdrop true
+
+    }
+
     spawn-at-startup "noctalia-shell"
 
     window-rule {
